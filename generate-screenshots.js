@@ -2,7 +2,7 @@ const { chromium } = require('playwright');
 const path = require('path');
 
 (async () => {
-  console.log('🎨 Generating fashion-forward screenshots with modern design...\n');
+  console.log('🍌 Generating Nano Banana style screenshots...\n');
   
   const browser = await chromium.launch({ 
     headless: true,
@@ -11,58 +11,49 @@ const path = require('path');
 
   const outputDir = path.join(__dirname, 'docs', 'screenshots');
 
-  // Homepage - Modern SaaS with bold colors
-  console.log('📸 01-homepage.png - Bold modern homepage');
+  console.log('📸 01-homepage.png');
   await generateHomepage(browser, outputDir);
 
-  // Sign In - Sleek authentication
-  console.log('📸 02-signin.png - Minimalist sign in');
+  console.log('📸 02-signin.png');
   await generateSignIn(browser, outputDir);
 
-  // Dashboard - Data viz with vibrant colors
-  console.log('📸 03-dashboard.png - Vibrant analytics dashboard');
+  console.log('📸 03-dashboard.png');
   await generateDashboard(browser, outputDir);
 
-  // Pricing - Creative pricing cards
-  console.log('📸 04-pricing.png - Bold pricing design');
+  console.log('📸 04-pricing.png');
   await generatePricing(browser, outputDir);
 
-  // Billing - Clean billing interface
-  console.log('📸 05-billing.png - Modern billing management');
+  console.log('📸 05-billing.png');
   await generateBilling(browser, outputDir);
 
   await browser.close();
-  console.log('\n✨ All screenshots generated with fashion-forward design!');
+  console.log('\n✨ All screenshots generated with Nano Banana aesthetic!');
 })();
 
-// Color Palette - German3 / Nano Banana inspired
+// Nano Banana Color Palette
 const colors = {
-  // Primary - Bold orange/coral
-  primary: '#FF6B35',
-  primaryDark: '#E85D2A',
+  // Primary - Bright Yellow
+  primary: '#FFD600',
+  primaryLight: '#FFE533',
   
-  // Secondary - Deep blue
-  secondary: '#1E3A5F',
+  // Secondary - Electric Purple
+  secondary: '#7B2CFF',
+  secondaryDark: '#5E17EB',
   
-  // Accent - Vibrant yellow
-  accent: '#FFD23F',
+  // Accent - Neon Green
+  accent: '#00FF94',
   
   // Neutrals
-  black: '#0D0D0D',
+  black: '#000000',
   darkGray: '#1A1A1A',
-  gray: '#6B6B6B',
-  lightGray: '#E5E5E5',
-  offWhite: '#FAFAFA',
+  gray: '#808080',
+  lightGray: '#E0E0E0',
   white: '#FFFFFF',
   
-  // Success/Error
-  success: '#00C853',
-  error: '#FF5252',
-  
-  // Gradients
-  gradient1: 'linear-gradient(135deg, #FF6B35 0%, #FF8F66 100%)',
-  gradient2: 'linear-gradient(135deg, #1E3A5F 0%, #2E5077 100%)',
-  gradient3: 'linear-gradient(135deg, #FFD23F 0%, #FFE066 100%)',
+  // Functional
+  success: '#00FF94',
+  error: '#FF3366',
+  warning: '#FFD600',
 };
 
 async function generateHomepage(browser, outputDir) {
@@ -75,135 +66,134 @@ async function generateHomepage(browser, outputDir) {
       <meta charset="UTF-8">
       <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
+        body { 
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          background: ${colors.white};
+        }
         
         /* Navigation */
         nav { 
           display: flex; 
           justify-content: space-between; 
           align-items: center; 
-          padding: 24px 80px; 
-          background: ${colors.white};
-          border-bottom: 1px solid ${colors.lightGray};
+          padding: 20px 80px; 
+          border-bottom: 3px solid ${colors.black};
         }
         .logo { 
-          font-size: 28px; 
+          font-size: 32px; 
           font-weight: 900; 
           color: ${colors.black};
-          letter-spacing: -1px;
+          letter-spacing: -2px;
         }
-        .logo span { color: ${colors.primary}; }
-        .nav-links { display: flex; gap: 48px; align-items: center; }
+        .logo span { 
+          background: ${colors.primary};
+          padding: 4px 12px;
+          border-radius: 8px;
+        }
+        .nav-links { display: flex; gap: 40px; align-items: center; }
         .nav-links a { 
           text-decoration: none; 
-          color: ${colors.gray}; 
-          font-weight: 600;
-          font-size: 15px;
-          transition: color 0.2s;
+          color: ${colors.black}; 
+          font-weight: 700;
+          font-size: 16px;
         }
-        .nav-links a:hover { color: ${colors.black}; }
         .btn-primary { 
-          background: ${colors.black}; 
+          background: ${colors.secondary}; 
           color: ${colors.white}; 
           padding: 14px 32px; 
-          border-radius: 100px; 
+          border-radius: 12px; 
           text-decoration: none; 
-          font-weight: 700;
+          font-weight: 800;
           font-size: 15px;
+          border: 3px solid ${colors.black};
+          box-shadow: 4px 4px 0 ${colors.black};
           transition: all 0.2s;
         }
-        .btn-primary:hover { 
-          background: ${colors.primary};
-          transform: translateY(-2px);
+        .btn-primary:hover {
+          transform: translate(2px, 2px);
+          box-shadow: 2px 2px 0 ${colors.black};
         }
         
         /* Hero */
         .hero { 
           text-align: center; 
-          padding: 140px 80px 100px; 
-          background: ${colors.offWhite};
+          padding: 120px 80px 100px; 
+          background: linear-gradient(180deg, ${colors.white} 0%, #FFF9E6 100%);
         }
         .hero-badge {
           display: inline-block;
-          background: ${colors.accent};
+          background: ${colors.primary};
           color: ${colors.black};
-          padding: 8px 20px;
+          padding: 10px 24px;
           border-radius: 100px;
-          font-weight: 700;
-          font-size: 14px;
+          font-weight: 800;
+          font-size: 15px;
           margin-bottom: 32px;
-          text-transform: uppercase;
-          letter-spacing: 1px;
+          border: 3px solid ${colors.black};
         }
         .hero h1 { 
-          font-size: 80px; 
+          font-size: 88px; 
           font-weight: 900; 
           margin-bottom: 32px; 
           color: ${colors.black};
-          letter-spacing: -3px;
-          line-height: 1.1;
+          letter-spacing: -4px;
+          line-height: 1;
         }
         .hero h1 span { 
-          color: ${colors.primary};
+          color: ${colors.secondary};
         }
         .hero p { 
-          font-size: 22px; 
+          font-size: 24px; 
           color: ${colors.gray}; 
           max-width: 700px; 
           margin: 0 auto 48px; 
           line-height: 1.6;
-          font-weight: 400;
         }
         .hero-buttons { 
           display: flex; 
-          gap: 16px; 
+          gap: 20px; 
           justify-content: center; 
         }
         .btn-large { 
-          padding: 18px 48px; 
+          padding: 20px 56px; 
           font-size: 18px; 
-          border-radius: 100px; 
-          font-weight: 700;
+          border-radius: 16px; 
+          font-weight: 800;
+          border: 3px solid ${colors.black};
+          box-shadow: 5px 5px 0 ${colors.black};
+          cursor: pointer;
           transition: all 0.2s;
         }
         .btn-hero { 
           background: ${colors.primary}; 
-          color: ${colors.white};
-          border: none;
+          color: ${colors.black};
         }
         .btn-hero:hover {
-          background: ${colors.primaryDark};
-          transform: translateY(-2px);
-          box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+          transform: translate(3px, 3px);
+          box-shadow: 2px 2px 0 ${colors.black};
         }
         .btn-outline { 
           background: ${colors.white}; 
-          color: ${colors.black}; 
-          border: 2px solid ${colors.lightGray};
+          color: ${colors.black};
         }
         .btn-outline:hover {
-          border-color: ${colors.black};
+          transform: translate(3px, 3px);
+          box-shadow: 2px 2px 0 ${colors.black};
         }
         
         /* Features */
         .features { 
-          padding: 120px 80px; 
+          padding: 100px 80px; 
           background: ${colors.white};
-        }
-        .features-header {
-          text-align: center;
-          margin-bottom: 80px;
+          border-top: 3px solid ${colors.black};
         }
         .features h2 { 
+          text-align: center;
           font-size: 56px; 
           font-weight: 900;
           color: ${colors.black};
           letter-spacing: -2px;
-          margin-bottom: 16px;
-        }
-        .features-subtitle {
-          font-size: 20px;
-          color: ${colors.gray};
+          margin-bottom: 80px;
         }
         .feature-grid { 
           display: grid; 
@@ -211,34 +201,35 @@ async function generateHomepage(browser, outputDir) {
           gap: 32px; 
         }
         .feature-card { 
-          padding: 48px; 
-          border-radius: 24px; 
-          background: ${colors.offWhite};
+          padding: 40px; 
+          border-radius: 20px; 
+          background: ${colors.white};
+          border: 3px solid ${colors.black};
+          box-shadow: 6px 6px 0 ${colors.black};
           transition: all 0.3s;
-          border: 1px solid transparent;
         }
         .feature-card:hover {
-          border-color: ${colors.primary};
-          transform: translateY(-8px);
-          box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+          transform: translate(-4px, -4px);
+          box-shadow: 10px 10px 0 ${colors.black};
         }
         .feature-icon { 
-          width: 64px;
-          height: 64px;
-          background: ${colors.gradient1};
+          width: 72px;
+          height: 72px;
+          background: ${colors.secondary};
           border-radius: 16px;
           display: flex;
           align-items: center;
           justify-content: center;
           margin-bottom: 24px;
-          font-size: 32px;
+          border: 3px solid ${colors.black};
         }
+        .feature-icon svg { width: 40px; height: 40px; fill: white; }
         .feature-card h3 { 
-          font-size: 24px; 
+          font-size: 26px; 
           font-weight: 800; 
           margin-bottom: 16px; 
           color: ${colors.black};
-          letter-spacing: -0.5px;
+          letter-spacing: -1px;
         }
         .feature-card p { 
           color: ${colors.gray}; 
@@ -246,36 +237,31 @@ async function generateHomepage(browser, outputDir) {
           font-size: 16px;
         }
         
-        /* Stats Bar */
+        /* Stats */
         .stats { 
           display: flex; 
           justify-content: space-around; 
           padding: 80px; 
           background: ${colors.black};
+          border-top: 3px solid ${colors.black};
         }
         .stat { 
           text-align: center; 
         }
         .stat-number { 
-          font-size: 72px; 
+          font-size: 80px; 
           font-weight: 900;
-          color: ${colors.white};
-          letter-spacing: -2px;
-        }
-        .stat-number span {
           color: ${colors.primary};
+          letter-spacing: -3px;
         }
         .stat-label { 
           font-size: 16px; 
-          color: ${colors.gray};
+          color: ${colors.white};
           text-transform: uppercase;
           letter-spacing: 2px;
-          font-weight: 600;
+          font-weight: 700;
           margin-top: 12px;
         }
-        
-        /* SVG Icons */
-        .icon { width: 32px; height: 32px; fill: white; }
       </style>
     </head>
     <body>
@@ -290,38 +276,35 @@ async function generateHomepage(browser, outputDir) {
       </nav>
       
       <section class="hero">
-        <span class="hero-badge">🚀 New v2.0 Released</span>
+        <span class="hero-badge">🚀 v2.0 Now Live</span>
         <h1>Build Beautiful<br><span>Data Products</span></h1>
         <p>The complete platform for modern SaaS companies. Analytics, billing, and team management in one place.</p>
         <div class="hero-buttons">
-          <button class="btn-large btn-hero">Start Free Trial →</button>
+          <button class="btn-large btn-hero">Start Free Trial</button>
           <button class="btn-large btn-outline">Watch Demo</button>
         </div>
       </section>
       
       <section class="features">
-        <div class="features-header">
-          <h2>Everything You Need</h2>
-          <p class="features-subtitle">Powerful features for growing businesses</p>
-        </div>
+        <h2>Everything You Need</h2>
         <div class="feature-grid">
           <div class="feature-card">
             <div class="feature-icon">
-              <svg class="icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
             </div>
             <h3>Enterprise Security</h3>
-            <p>Bank-level encryption and security. SOC 2 Type II certified. Your data is always protected.</p>
+            <p>Bank-level encryption and SOC 2 Type II certified. Your data is always protected with enterprise-grade security.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
-              <svg class="icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
             </div>
             <h3>Real-time Analytics</h3>
             <p>Live dashboards with instant updates. Track metrics that matter to your business growth.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon">
-              <svg class="icon" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
             </div>
             <h3>Smart Billing</h3>
             <p>Automated subscriptions and invoicing. Stripe integration for seamless payments.</p>
@@ -331,19 +314,19 @@ async function generateHomepage(browser, outputDir) {
       
       <section class="stats">
         <div class="stat">
-          <div class="stat-number">99.9<span>%</span></div>
+          <div class="stat-number">99.9%</div>
           <div class="stat-label">Uptime SLA</div>
         </div>
         <div class="stat">
-          <div class="stat-number">10<span>K+</span></div>
+          <div class="stat-number">10K+</div>
           <div class="stat-label">Active Users</div>
         </div>
         <div class="stat">
-          <div class="stat-number">$50<span>M+</span></div>
+          <div class="stat-number">$50M+</div>
           <div class="stat-label">Processed</div>
         </div>
         <div class="stat">
-          <div class="stat-number">24<span>/7</span></div>
+          <div class="stat-number">24/7</div>
           <div class="stat-label">Support</div>
         </div>
       </section>
@@ -364,12 +347,10 @@ async function generateSignIn(browser, outputDir) {
     <head>
       <meta charset="UTF-8">
       <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-          background: ${colors.offWhite};
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          background: ${colors.white};
           min-height: 1080px;
           display: flex;
         }
@@ -377,48 +358,41 @@ async function generateSignIn(browser, outputDir) {
         /* Left Panel */
         .left-panel { 
           flex: 1; 
-          background: ${colors.gradient2};
+          background: ${colors.secondary};
           padding: 80px;
           display: flex;
           flex-direction: column;
           justify-content: center;
-          position: relative;
-          overflow: hidden;
-        }
-        .left-panel::before {
-          content: '';
-          position: absolute;
-          top: -50%;
-          right: -50%;
-          width: 100%;
-          height: 100%;
-          background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+          border-right: 3px solid ${colors.black};
         }
         .brand {
-          font-size: 32px;
+          font-size: 36px;
           font-weight: 900;
           color: ${colors.white};
           margin-bottom: 60px;
-          letter-spacing: -1px;
+          letter-spacing: -2px;
         }
-        .brand span { color: ${colors.accent}; }
+        .brand span { 
+          background: ${colors.primary};
+          color: ${colors.black};
+          padding: 4px 16px;
+          border-radius: 8px;
+        }
         .left-panel h1 { 
-          font-size: 64px; 
+          font-size: 72px; 
           font-weight: 900; 
           color: ${colors.white};
           margin-bottom: 32px;
-          letter-spacing: -2px;
-          line-height: 1.1;
+          letter-spacing: -3px;
+          line-height: 1;
         }
         .left-panel p { 
-          font-size: 20px; 
-          color: rgba(255,255,255,0.8);
+          font-size: 22px; 
+          color: rgba(255,255,255,0.9);
           line-height: 1.6;
           margin-bottom: 48px;
         }
-        .feature-list { 
-          list-style: none; 
-        }
+        .feature-list { list-style: none; }
         .feature-list li { 
           padding: 20px 0; 
           display: flex; 
@@ -426,19 +400,19 @@ async function generateSignIn(browser, outputDir) {
           gap: 20px; 
           font-size: 18px;
           color: ${colors.white};
-          font-weight: 500;
+          font-weight: 600;
         }
         .check-icon {
-          width: 28px;
-          height: 28px;
+          width: 32px;
+          height: 32px;
           background: ${colors.accent};
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          flex-shrink: 0;
+          border: 3px solid ${colors.black};
         }
-        .check-icon svg { width: 16px; height: 16px; fill: ${colors.black}; }
+        .check-icon svg { width: 18px; height: 18px; fill: ${colors.black}; }
         
         /* Right Panel */
         .right-panel { 
@@ -451,23 +425,21 @@ async function generateSignIn(browser, outputDir) {
         }
         .auth-header { margin-bottom: 48px; }
         .auth-header h2 { 
-          font-size: 40px; 
+          font-size: 48px; 
           font-weight: 900; 
           color: ${colors.black};
           margin-bottom: 12px;
-          letter-spacing: -1.5px;
+          letter-spacing: -2px;
         }
         .auth-header p { 
           color: ${colors.gray};
           font-size: 18px;
         }
         
-        .form-group { 
-          margin-bottom: 24px; 
-        }
+        .form-group { margin-bottom: 24px; }
         .form-group label { 
           display: block; 
-          font-weight: 700; 
+          font-weight: 800; 
           font-size: 14px;
           text-transform: uppercase;
           letter-spacing: 1px;
@@ -477,34 +449,34 @@ async function generateSignIn(browser, outputDir) {
         .form-group input { 
           width: 100%; 
           padding: 18px 20px; 
-          border: 2px solid ${colors.lightGray}; 
+          border: 3px solid ${colors.black}; 
           border-radius: 12px; 
           font-size: 16px; 
           font-family: inherit;
-          transition: all 0.2s;
         }
         .form-group input:focus { 
           outline: none; 
-          border-color: ${colors.black};
+          border-color: ${colors.secondary};
         }
         
         .btn-submit { 
           width: 100%; 
-          background: ${colors.black}; 
-          color: ${colors.white}; 
+          background: ${colors.primary}; 
+          color: ${colors.black}; 
           padding: 20px; 
-          border: none; 
+          border: 3px solid ${colors.black}; 
           border-radius: 12px; 
           font-size: 18px; 
-          font-weight: 800; 
+          font-weight: 900; 
           cursor: pointer; 
           margin-top: 8px;
           font-family: inherit;
+          box-shadow: 4px 4px 0 ${colors.black};
           transition: all 0.2s;
         }
         .btn-submit:hover { 
-          background: ${colors.primary};
-          transform: translateY(-2px);
+          transform: translate(2px, 2px);
+          box-shadow: 2px 2px 0 ${colors.black};
         }
         
         .divider { 
@@ -512,7 +484,7 @@ async function generateSignIn(browser, outputDir) {
           margin: 40px 0; 
           color: ${colors.gray}; 
           position: relative; 
-          font-weight: 600;
+          font-weight: 700;
         }
         .divider::before { 
           content: ''; 
@@ -520,38 +492,32 @@ async function generateSignIn(browser, outputDir) {
           left: 0; 
           right: 0; 
           top: 50%; 
-          height: 1px; 
+          height: 2px; 
           background: ${colors.lightGray}; 
           z-index: -1; 
         }
-        .divider span { 
-          background: ${colors.white}; 
-          padding: 0 24px; 
-        }
+        .divider span { background: ${colors.white}; padding: 0 24px; }
         
-        .social-login { 
-          display: flex; 
-          flex-direction: column; 
-          gap: 16px; 
-        }
+        .social-login { display: flex; flex-direction: column; gap: 16px; }
         .btn-social { 
           display: flex; 
           align-items: center; 
           justify-content: center; 
           gap: 12px; 
           padding: 16px; 
-          border: 2px solid ${colors.lightGray}; 
+          border: 3px solid ${colors.black}; 
           border-radius: 12px; 
           background: ${colors.white}; 
           font-size: 16px; 
-          font-weight: 700; 
+          font-weight: 800; 
           cursor: pointer; 
-          transition: all 0.2s;
           font-family: inherit;
+          box-shadow: 3px 3px 0 ${colors.black};
+          transition: all 0.2s;
         }
-        .btn-social:hover { 
-          border-color: ${colors.black};
-          transform: translateY(-2px);
+        .btn-social:hover {
+          transform: translate(2px, 2px);
+          box-shadow: 1px 1px 0 ${colors.black};
         }
         .social-icon { width: 24px; height: 24px; }
         
@@ -564,9 +530,8 @@ async function generateSignIn(browser, outputDir) {
         .footer-text a { 
           color: ${colors.black}; 
           text-decoration: none; 
-          font-weight: 800;
+          font-weight: 900;
         }
-        .footer-text a:hover { text-decoration: underline; }
       </style>
     </head>
     <body>
@@ -579,25 +544,19 @@ async function generateSignIn(browser, outputDir) {
             <div class="check-icon">
               <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
             </div>
-            Real-time analytics dashboard
+            Real-time analytics
           </li>
           <li>
             <div class="check-icon">
               <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
             </div>
-            Team collaboration tools
+            Team collaboration
           </li>
           <li>
             <div class="check-icon">
               <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
             </div>
-            Advanced reporting & exports
-          </li>
-          <li>
-            <div class="check-icon">
-              <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-            </div>
-            24/7 priority support
+            Advanced reporting
           </li>
         </ul>
       </div>
@@ -634,7 +593,7 @@ async function generateSignIn(browser, outputDir) {
         </div>
         
         <p class="footer-text">
-          Don't have an account? <a href="#">Sign up for free</a>
+          Don't have an account? <a href="#">Sign up</a>
         </p>
       </div>
     </body>
@@ -654,12 +613,10 @@ async function generateDashboard(browser, outputDir) {
     <head>
       <meta charset="UTF-8">
       <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-          background: ${colors.offWhite};
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+          background: ${colors.white};
           display: flex;
           min-height: 1080px;
         }
@@ -669,16 +626,16 @@ async function generateDashboard(browser, outputDir) {
           width: 280px; 
           background: ${colors.white};
           padding: 32px 24px; 
-          border-right: 1px solid ${colors.lightGray};
+          border-right: 3px solid ${colors.black};
         }
         .logo { 
-          font-size: 26px; 
+          font-size: 28px; 
           font-weight: 900; 
           color: ${colors.black};
           margin-bottom: 48px;
           letter-spacing: -1px;
         }
-        .logo span { color: ${colors.primary}; }
+        .logo span { color: ${colors.secondary}; }
         .nav-item { 
           display: flex; 
           align-items: center; 
@@ -688,18 +645,18 @@ async function generateDashboard(browser, outputDir) {
           color: ${colors.gray}; 
           text-decoration: none; 
           margin-bottom: 8px; 
-          font-weight: 600;
+          font-weight: 700;
           font-size: 15px;
-          transition: all 0.2s;
+          border: 2px solid transparent;
         }
         .nav-item:hover, .nav-item.active { 
-          background: ${colors.black};
+          background: ${colors.secondary};
           color: ${colors.white};
         }
         .nav-item svg { width: 22px; height: 22px; fill: currentColor; }
         
-        /* Main Content */
-        .main { flex: 1; padding: 40px; }
+        /* Main */
+        .main { flex: 1; padding: 40px; background: #FAFAFA; }
         .header { 
           display: flex; 
           justify-content: space-between; 
@@ -707,31 +664,28 @@ async function generateDashboard(browser, outputDir) {
           margin-bottom: 40px; 
         }
         .header h1 { 
-          font-size: 40px; 
+          font-size: 42px; 
           color: ${colors.black};
           font-weight: 900;
-          letter-spacing: -1.5px;
+          letter-spacing: -2px;
         }
-        .user-menu { 
-          display: flex; 
-          align-items: center; 
-          gap: 16px; 
-        }
-        .user-name { font-weight: 700; color: ${colors.black}; }
+        .user-menu { display: flex; align-items: center; gap: 16px; }
+        .user-name { font-weight: 800; }
         .avatar { 
           width: 48px; 
           height: 48px; 
           border-radius: 50%; 
-          background: ${colors.gradient1};
+          background: ${colors.primary};
           display: flex; 
           align-items: center; 
           justify-content: center; 
-          color: ${colors.white}; 
-          font-weight: 800;
+          color: ${colors.black}; 
+          font-weight: 900;
           font-size: 20px;
+          border: 3px solid ${colors.black};
         }
         
-        /* Stats Grid */
+        /* Stats */
         .stats-grid { 
           display: grid; 
           grid-template-columns: repeat(4, 1fr); 
@@ -742,36 +696,37 @@ async function generateDashboard(browser, outputDir) {
           background: ${colors.white};
           padding: 32px; 
           border-radius: 16px; 
-          box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+          border: 3px solid ${colors.black};
+          box-shadow: 5px 5px 0 ${colors.black};
         }
         .stat-label { 
           color: ${colors.gray}; 
           font-size: 13px;
-          font-weight: 700;
+          font-weight: 800;
           text-transform: uppercase;
           letter-spacing: 1px;
           margin-bottom: 12px; 
         }
         .stat-value { 
-          font-size: 40px; 
+          font-size: 42px; 
           font-weight: 900; 
           color: ${colors.black};
-          letter-spacing: -1px;
+          letter-spacing: -2px;
         }
         .stat-change { 
           font-size: 14px; 
           margin-top: 12px;
-          font-weight: 600;
+          font-weight: 700;
         }
         .stat-change.up { color: ${colors.success}; }
-        .stat-change.down { color: ${colors.error}; }
         
-        /* Chart Section */
+        /* Chart */
         .chart-section { 
           background: ${colors.white};
           padding: 40px; 
           border-radius: 16px; 
-          box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+          border: 3px solid ${colors.black};
+          box-shadow: 5px 5px 0 ${colors.black};
           margin-bottom: 24px; 
         }
         .chart-header { 
@@ -780,93 +735,53 @@ async function generateDashboard(browser, outputDir) {
           align-items: center; 
           margin-bottom: 32px; 
         }
-        .chart-title { 
-          font-size: 26px; 
-          font-weight: 800;
-          color: ${colors.black};
-        }
-        .chart-legend { 
-          display: flex; 
-          gap: 32px; 
-        }
-        .legend-item { 
-          display: flex; 
-          align-items: center; 
-          gap: 10px;
-          font-weight: 600;
-          font-size: 14px;
-        }
-        .legend-dot { 
-          width: 12px; 
-          height: 12px; 
-          border-radius: 50%; 
-        }
-        
-        /* Fake Chart */
+        .chart-title { font-size: 28px; font-weight: 800; }
         .chart { 
           height: 280px; 
           display: flex; 
           align-items: flex-end; 
           gap: 16px; 
           padding: 20px 0; 
-          border-bottom: 2px solid ${colors.lightGray};
         }
         .bar { 
           flex: 1; 
-          background: ${colors.gradient1};
+          background: ${colors.secondary};
           border-radius: 8px 8px 0 0; 
-          position: relative; 
-          transition: opacity 0.2s;
+          border: 3px solid ${colors.black};
+          border-bottom: none;
         }
-        .bar:hover { opacity: 0.8; }
         
-        /* Recent Activity */
+        /* Activity */
         .activity-section { 
           background: ${colors.white};
           padding: 40px; 
           border-radius: 16px; 
-          box-shadow: 0 2px 8px rgba(0,0,0,0.04); 
+          border: 3px solid ${colors.black};
+          box-shadow: 5px 5px 0 ${colors.black};
         }
-        .activity-title { 
-          font-size: 26px; 
-          font-weight: 800;
-          color: ${colors.black};
-          margin-bottom: 32px; 
-        }
+        .activity-title { font-size: 28px; font-weight: 800; margin-bottom: 32px; }
         .activity-item { 
           display: flex; 
           align-items: center; 
           gap: 20px; 
           padding: 20px 0; 
-          border-bottom: 1px solid ${colors.lightGray}; 
+          border-bottom: 2px solid ${colors.lightGray};
         }
         .activity-icon { 
           width: 52px; 
           height: 52px; 
           border-radius: 14px; 
-          background: ${colors.offWhite};
+          background: ${colors.primary};
           display: flex; 
           align-items: center; 
           justify-content: center; 
           font-size: 26px;
-          flex-shrink: 0;
+          border: 3px solid ${colors.black};
         }
         .activity-info { flex: 1; }
-        .activity-text { 
-          font-weight: 700; 
-          color: ${colors.black};
-          font-size: 16px;
-        }
-        .activity-time { 
-          color: ${colors.gray}; 
-          font-size: 14px;
-          margin-top: 4px;
-        }
-        .activity-amount { 
-          font-weight: 800; 
-          color: ${colors.success};
-          font-size: 18px;
-        }
+        .activity-text { font-weight: 800; font-size: 16px; }
+        .activity-time { color: ${colors.gray}; font-size: 14px; margin-top: 4px; }
+        .activity-amount { font-weight: 900; color: ${colors.success}; font-size: 18px; }
       </style>
     </head>
     <body>
@@ -893,10 +808,6 @@ async function generateDashboard(browser, outputDir) {
             <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
             Billing
           </a>
-          <a href="#" class="nav-item">
-            <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
-            Settings
-          </a>
         </nav>
       </aside>
       
@@ -911,40 +822,30 @@ async function generateDashboard(browser, outputDir) {
         
         <div class="stats-grid">
           <div class="stat-card">
-            <div class="stat-label">Total Revenue</div>
+            <div class="stat-label">Revenue</div>
             <div class="stat-value">$24,563</div>
-            <div class="stat-change up">↑ 12.5% vs last month</div>
+            <div class="stat-change up">↑ 12.5%</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Active Users</div>
+            <div class="stat-label">Users</div>
             <div class="stat-value">2,453</div>
-            <div class="stat-change up">↑ 8.2% vs last month</div>
+            <div class="stat-change up">↑ 8.2%</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">New Customers</div>
+            <div class="stat-label">Customers</div>
             <div class="stat-value">184</div>
-            <div class="stat-change up">↑ 23.1% vs last month</div>
+            <div class="stat-change up">↑ 23.1%</div>
           </div>
           <div class="stat-card">
-            <div class="stat-label">Churn Rate</div>
+            <div class="stat-label">Churn</div>
             <div class="stat-value">2.4%</div>
-            <div class="stat-change down">↓ 0.3% vs last month</div>
+            <div class="stat-change up">↓ 0.3%</div>
           </div>
         </div>
         
         <section class="chart-section">
           <div class="chart-header">
             <div class="chart-title">Revenue Overview</div>
-            <div class="chart-legend">
-              <div class="legend-item">
-                <div class="legend-dot" style="background: ${colors.primary};"></div>
-                This Month
-              </div>
-              <div class="legend-item">
-                <div class="legend-dot" style="background: ${colors.lightGray};"></div>
-                Last Month
-              </div>
-            </div>
           </div>
           <div class="chart">
             <div class="bar" style="height: 40%;"></div>
@@ -967,32 +868,25 @@ async function generateDashboard(browser, outputDir) {
           <div class="activity-item">
             <div class="activity-icon">💳</div>
             <div class="activity-info">
-              <div class="activity-text">New subscription: Pro Plan</div>
-              <div class="activity-time">2 minutes ago</div>
+              <div class="activity-text">New subscription: Pro</div>
+              <div class="activity-time">2 min ago</div>
             </div>
-            <div class="activity-amount">+$29.00</div>
+            <div class="activity-amount">+$29</div>
           </div>
           <div class="activity-item">
             <div class="activity-icon">👤</div>
             <div class="activity-info">
               <div class="activity-text">New user registered</div>
-              <div class="activity-time">15 minutes ago</div>
+              <div class="activity-time">15 min ago</div>
             </div>
           </div>
           <div class="activity-item">
             <div class="activity-icon">⬆️</div>
             <div class="activity-info">
-              <div class="activity-text">Subscription upgraded: Enterprise</div>
+              <div class="activity-text">Upgraded to Enterprise</div>
               <div class="activity-time">1 hour ago</div>
             </div>
-            <div class="activity-amount">+$70.00</div>
-          </div>
-          <div class="activity-item">
-            <div class="activity-icon">📧</div>
-            <div class="activity-info">
-              <div class="activity-text">Invoice sent to Acme Corp</div>
-              <div class="activity-time">3 hours ago</div>
-            </div>
+            <div class="activity-amount">+$70</div>
           </div>
         </section>
       </main>
@@ -1016,40 +910,35 @@ async function generatePricing(browser, outputDir) {
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-          background: ${colors.offWhite};
+          background: ${colors.white};
           min-height: 1080px;
           padding: 80px;
         }
         
-        .header { 
-          text-align: center; 
-          margin-bottom: 80px; 
-        }
+        .header { text-align: center; margin-bottom: 80px; }
         .header-badge {
           display: inline-block;
-          background: ${colors.accent};
+          background: ${colors.primary};
           color: ${colors.black};
-          padding: 8px 20px;
+          padding: 10px 24px;
           border-radius: 100px;
           font-weight: 800;
-          font-size: 13px;
-          text-transform: uppercase;
-          letter-spacing: 1.5px;
+          font-size: 14px;
+          border: 3px solid ${colors.black};
           margin-bottom: 24px;
         }
         .header h1 { 
-          font-size: 64px; 
+          font-size: 72px; 
           font-weight: 900; 
           color: ${colors.black};
           margin-bottom: 20px;
-          letter-spacing: -2.5px;
+          letter-spacing: -3px;
         }
         .header p { 
           font-size: 22px; 
           color: ${colors.gray};
           max-width: 600px; 
           margin: 0 auto; 
-          line-height: 1.6;
         }
         
         .pricing-grid { 
@@ -1065,31 +954,31 @@ async function generatePricing(browser, outputDir) {
           border-radius: 24px; 
           padding: 48px 40px; 
           position: relative; 
+          border: 3px solid ${colors.black};
+          box-shadow: 6px 6px 0 ${colors.black};
           transition: all 0.3s;
-          border: 2px solid transparent;
         }
         .pricing-card:hover { 
-          transform: translateY(-12px);
-          box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+          transform: translate(-4px, -4px);
+          box-shadow: 10px 10px 0 ${colors.black};
         }
         .pricing-card.popular { 
-          border-color: ${colors.primary};
-          box-shadow: 0 20px 40px rgba(255, 107, 53, 0.15);
+          background: ${colors.primary};
+          box-shadow: 8px 8px 0 ${colors.black};
         }
         
         .popular-badge { 
           position: absolute; 
-          top: -16px; 
+          top: -18px; 
           left: 50%; 
           transform: translateX(-50%); 
-          background: ${colors.gradient1};
+          background: ${colors.secondary};
           color: ${colors.white};
           padding: 8px 24px; 
           border-radius: 100px; 
           font-weight: 800; 
           font-size: 13px;
-          text-transform: uppercase;
-          letter-spacing: 1px;
+          border: 3px solid ${colors.black};
         }
         
         .plan-name { 
@@ -1098,14 +987,13 @@ async function generatePricing(browser, outputDir) {
           color: ${colors.gray};
           margin-bottom: 16px;
           text-transform: uppercase;
-          letter-spacing: 1.5px;
         }
         .plan-price { 
-          font-size: 80px; 
+          font-size: 88px; 
           font-weight: 900; 
           color: ${colors.black};
           margin-bottom: 8px;
-          letter-spacing: -3px;
+          letter-spacing: -4px;
         }
         .plan-price span { 
           font-size: 24px; 
@@ -1116,35 +1004,32 @@ async function generatePricing(browser, outputDir) {
         .plan-desc { 
           color: ${colors.gray};
           margin-bottom: 40px; 
-          line-height: 1.6;
           font-size: 16px;
         }
         
-        .features-list { 
-          list-style: none; 
-          margin-bottom: 40px; 
-        }
+        .features-list { list-style: none; margin-bottom: 40px; }
         .features-list li { 
           padding: 16px 0; 
-          border-bottom: 1px solid ${colors.lightGray};
+          border-bottom: 2px solid ${colors.lightGray};
           display: flex; 
           align-items: center; 
           gap: 16px;
           font-size: 16px;
-          font-weight: 500;
+          font-weight: 600;
         }
         .features-list li:last-child { border-bottom: none; }
         .check-icon {
-          width: 24px;
-          height: 24px;
+          width: 26px;
+          height: 26px;
           background: ${colors.success};
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
+          border: 2px solid ${colors.black};
           flex-shrink: 0;
         }
-        .check-icon svg { width: 14px; height: 14px; fill: white; }
+        .check-icon svg { width: 14px; height: 14px; fill: ${colors.black}; }
         .features-list li.disabled { opacity: 0.4; }
         .features-list li.disabled .check-icon { background: ${colors.lightGray}; }
         
@@ -1155,152 +1040,86 @@ async function generatePricing(browser, outputDir) {
           font-size: 17px; 
           font-weight: 800; 
           cursor: pointer; 
-          border: none;
+          border: 3px solid ${colors.black};
           font-family: inherit;
+          box-shadow: 4px 4px 0 ${colors.black};
           transition: all 0.2s;
-          text-transform: uppercase;
-          letter-spacing: 1px;
         }
         .btn-plan.primary { 
           background: ${colors.black};
           color: ${colors.white};
         }
         .btn-plan.primary:hover {
-          background: ${colors.primary};
-          transform: translateY(-2px);
+          transform: translate(2px, 2px);
+          box-shadow: 2px 2px 0 ${colors.black};
         }
         .btn-plan.secondary { 
-          background: ${colors.offWhite};
+          background: ${colors.white};
           color: ${colors.black};
-          border: 2px solid ${colors.lightGray};
-        }
-        .btn-plan.secondary:hover {
-          border-color: ${colors.black};
         }
         
         .trust-badge { 
           text-align: center; 
-          margin-top: 80px; 
+          margin-top: 60px; 
           color: ${colors.gray};
           font-size: 15px;
         }
-        .trust-badge strong { color: ${colors.black}; }
       </style>
     </head>
     <body>
       <div class="header">
         <span class="header-badge">✨ 14-Day Free Trial</span>
         <h1>Simple Pricing</h1>
-        <p>Choose the plan that fits your business. All plans include core features.</p>
+        <p>Choose the plan that fits your business.</p>
       </div>
       
       <div class="pricing-grid">
-        <!-- Free Plan -->
         <div class="pricing-card">
           <div class="plan-name">Free</div>
           <div class="plan-price">$0<span>/mo</span></div>
-          <div class="plan-desc">Perfect for side projects and getting started.</div>
+          <div class="plan-desc">Perfect for side projects.</div>
           <ul class="features-list">
-            <li>
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              Up to 1,000 events/month
-            </li>
-            <li>
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              1 team member
-            </li>
-            <li>
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              Basic analytics
-            </li>
-            <li>
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              Email support
-            </li>
-            <li class="disabled">
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              Custom reports
-            </li>
-            <li class="disabled">
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              API access
-            </li>
+            <li><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>1K events/month</li>
+            <li><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>1 team member</li>
+            <li><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>Basic analytics</li>
+            <li><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>Email support</li>
+            <li class="disabled"><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>Custom reports</li>
           </ul>
           <button class="btn-plan secondary">Start Free</button>
         </div>
         
-        <!-- Pro Plan -->
         <div class="pricing-card popular">
           <div class="popular-badge">Most Popular</div>
           <div class="plan-name">Pro</div>
           <div class="plan-price">$29<span>/mo</span></div>
-          <div class="plan-desc">For growing businesses that need advanced features.</div>
+          <div class="plan-desc">For growing businesses.</div>
           <ul class="features-list">
-            <li>
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              Up to 100K events/month
-            </li>
-            <li>
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              5 team members
-            </li>
-            <li>
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              Advanced analytics
-            </li>
-            <li>
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              Priority support
-            </li>
-            <li>
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              Custom reports
-            </li>
-            <li>
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              API access
-            </li>
+            <li><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>100K events/month</li>
+            <li><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>5 team members</li>
+            <li><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>Advanced analytics</li>
+            <li><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>Priority support</li>
+            <li><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>Custom reports</li>
           </ul>
           <button class="btn-plan primary">Start Pro Trial</button>
         </div>
         
-        <!-- Enterprise Plan -->
         <div class="pricing-card">
           <div class="plan-name">Enterprise</div>
           <div class="plan-price">$99<span>/mo</span></div>
-          <div class="plan-desc">For large organizations with custom requirements.</div>
+          <div class="plan-desc">For large organizations.</div>
           <ul class="features-list">
-            <li>
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              Unlimited events
-            </li>
-            <li>
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              Unlimited team members
-            </li>
-            <li>
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              Advanced analytics
-            </li>
-            <li>
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              24/7 dedicated support
-            </li>
-            <li>
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              Custom integrations
-            </li>
-            <li>
-              <div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>
-              SLA guarantee
-            </li>
+            <li><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>Unlimited events</li>
+            <li><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>Unlimited team</li>
+            <li><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>Advanced analytics</li>
+            <li><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>24/7 support</li>
+            <li><div class="check-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div>Custom integrations</li>
           </ul>
           <button class="btn-plan secondary">Contact Sales</button>
         </div>
       </div>
       
       <div class="trust-badge">
-        <strong>💳 Secure payments</strong> by Stripe • Cancel anytime • No hidden fees
+        💳 Secure payments by Stripe • Cancel anytime
       </div>
     </body>
     </html>
@@ -1322,97 +1141,71 @@ async function generateBilling(browser, outputDir) {
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-          background: ${colors.offWhite};
+          background: #FAFAFA;
           min-height: 1080px;
           padding: 40px;
         }
         
-        .container { 
-          max-width: 1200px; 
-          margin: 0 auto; 
-        }
-        .header { 
-          margin-bottom: 40px; 
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { margin-bottom: 40px; }
         .header h1 { 
-          font-size: 40px; 
+          font-size: 42px; 
           color: ${colors.black};
           font-weight: 900;
-          letter-spacing: -1.5px;
+          letter-spacing: -2px;
           margin-bottom: 8px;
         }
-        .header p { 
-          color: ${colors.gray};
-          font-size: 18px;
-        }
+        .header p { color: ${colors.gray}; font-size: 18px; }
         
-        .billing-grid { 
-          display: grid; 
-          grid-template-columns: 2fr 1fr; 
-          gap: 32px; 
-        }
+        .billing-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 32px; }
         
         .card { 
           background: ${colors.white};
           border-radius: 20px; 
           padding: 40px; 
-          box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+          border: 3px solid ${colors.black};
+          box-shadow: 5px 5px 0 ${colors.black};
           margin-bottom: 32px; 
         }
         .card-title { 
-          font-size: 26px; 
+          font-size: 28px; 
           font-weight: 800;
           color: ${colors.black};
           margin-bottom: 32px;
-          letter-spacing: -0.5px;
         }
         
-        /* Current Plan */
         .current-plan { 
           display: flex; 
           justify-content: space-between; 
           align-items: center; 
           padding: 40px; 
-          background: ${colors.gradient2};
+          background: ${colors.secondary};
           border-radius: 16px; 
           color: ${colors.white};
           margin-bottom: 32px;
+          border: 3px solid ${colors.black};
         }
-        .plan-info h3 { 
-          font-size: 32px; 
-          margin-bottom: 12px;
-          font-weight: 900;
-          letter-spacing: -1px;
-        }
-        .plan-info p { 
-          opacity: 0.9;
-          font-size: 16px;
-        }
+        .plan-info h3 { font-size: 32px; margin-bottom: 12px; font-weight: 900; }
+        .plan-info p { opacity: 0.9; font-size: 16px; }
         .plan-actions { text-align: right; }
         .btn-outline { 
           background: transparent; 
-          border: 2px solid rgba(255,255,255,0.5); 
+          border: 3px solid ${colors.white}; 
           color: ${colors.white}; 
           padding: 14px 32px; 
           border-radius: 100px; 
-          font-weight: 700; 
+          font-weight: 800; 
           cursor: pointer;
           font-family: inherit;
-          font-size: 15px;
-          transition: all 0.2s;
-        }
-        .btn-outline:hover {
-          border-color: ${colors.white};
-          background: rgba(255,255,255,0.1);
         }
         
-        /* Payment Method */
         .payment-method { 
           display: flex; 
           align-items: center; 
           gap: 24px; 
           padding: 24px; 
-          background: ${colors.offWhite};
+          background: ${colors.white};
+          border: 3px solid ${colors.black};
           border-radius: 14px; 
         }
         .card-icon { 
@@ -1426,167 +1219,94 @@ async function generateBilling(browser, outputDir) {
           color: ${colors.white}; 
           font-weight: 900; 
           font-size: 16px;
-          font-family: monospace;
+          border: 2px solid ${colors.black};
         }
         .card-details { flex: 1; }
-        .card-number { 
-          font-size: 20px; 
-          font-weight: 700; 
-          color: ${colors.black};
-          letter-spacing: 1px;
-        }
-        .card-expiry { 
-          color: ${colors.gray}; 
-          font-size: 14px;
-          margin-top: 4px;
-        }
+        .card-number { font-size: 20px; font-weight: 800; letter-spacing: 1px; }
+        .card-expiry { color: ${colors.gray}; font-size: 14px; margin-top: 4px; }
         .btn-update { 
           padding: 12px 28px; 
-          border: 2px solid ${colors.lightGray}; 
+          border: 3px solid ${colors.black}; 
           color: ${colors.black}; 
           background: ${colors.white}; 
           border-radius: 100px; 
-          font-weight: 700; 
+          font-weight: 800; 
           cursor: pointer;
           font-family: inherit;
-          font-size: 14px;
-          transition: all 0.2s;
-        }
-        .btn-update:hover {
-          border-color: ${colors.black};
         }
         
-        /* Invoice Table */
-        .invoice-table { 
-          width: 100%; 
-          border-collapse: collapse; 
-        }
+        .invoice-table { width: 100%; border-collapse: collapse; }
         .invoice-table th { 
           text-align: left; 
           padding: 16px; 
           color: ${colors.gray};
-          font-weight: 700;
+          font-weight: 800;
           font-size: 13px;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          border-bottom: 2px solid ${colors.lightGray};
+          border-bottom: 3px solid ${colors.black};
         }
         .invoice-table td { 
           padding: 20px 16px; 
-          border-bottom: 1px solid ${colors.lightGray};
+          border-bottom: 2px solid ${colors.lightGray};
           font-size: 15px;
         }
-        .invoice-table tr:last-child td { border-bottom: none; }
         .status-badge { 
           padding: 6px 16px; 
           border-radius: 100px; 
           font-size: 13px; 
           font-weight: 800;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
+          border: 2px solid ${colors.black};
         }
-        .status-paid { 
-          background: #d1fae5; 
-          color: #065f46; 
-        }
-        .status-pending { 
-          background: #fef3c7; 
-          color: #92400e; 
-        }
-        .btn-download { 
-          color: ${colors.primary}; 
-          text-decoration: none; 
-          font-weight: 700;
-          font-size: 14px;
-        }
-        .btn-download:hover { text-decoration: underline; }
+        .status-paid { background: ${colors.success}; }
+        .status-pending { background: ${colors.warning}; }
+        .btn-download { color: ${colors.secondary}; text-decoration: none; font-weight: 800; }
         
-        /* Sidebar */
         .upgrade-cta { 
-          background: ${colors.gradient1};
-          color: ${colors.white}; 
+          background: ${colors.primary};
+          color: ${colors.black}; 
           padding: 40px 32px; 
           border-radius: 16px; 
           margin-bottom: 24px;
           text-align: center;
+          border: 3px solid ${colors.black};
+          box-shadow: 5px 5px 0 ${colors.black};
         }
-        .upgrade-cta h3 { 
-          font-size: 26px; 
-          margin-bottom: 16px;
-          font-weight: 900;
-          letter-spacing: -1px;
-        }
-        .upgrade-cta p { 
-          opacity: 0.95; 
-          margin-bottom: 28px; 
-          line-height: 1.6;
-          font-size: 15px;
-        }
+        .upgrade-cta h3 { font-size: 28px; margin-bottom: 16px; font-weight: 900; }
+        .upgrade-cta p { margin-bottom: 28px; font-size: 15px; }
         .btn-white { 
           background: ${colors.white}; 
-          color: ${colors.primary}; 
+          color: ${colors.black}; 
           padding: 16px 32px; 
-          border: none; 
+          border: 3px solid ${colors.black}; 
           border-radius: 100px; 
           font-weight: 800; 
           cursor: pointer; 
           width: 100%;
           font-family: inherit;
-          font-size: 15px;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          transition: all 0.2s;
-        }
-        .btn-white:hover {
-          transform: translateY(-2px);
+          box-shadow: 3px 3px 0 ${colors.black};
         }
         
         .usage-card { 
-          background: ${colors.offWhite};
+          background: ${colors.white};
           padding: 32px; 
           border-radius: 14px; 
+          border: 3px solid ${colors.black};
         }
-        .usage-label { 
-          color: ${colors.gray}; 
-          font-size: 13px;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          margin-bottom: 16px;
-        }
-        .usage-bar { 
-          height: 10px; 
-          background: ${colors.lightGray};
-          border-radius: 10px; 
-          overflow: hidden; 
-          margin-bottom: 12px; 
-        }
-        .usage-fill { 
-          height: 100%; 
-          background: ${colors.gradient1};
-          border-radius: 10px; 
-        }
-        .usage-text { 
-          font-size: 14px; 
-          color: ${colors.gray};
-          font-weight: 600;
-        }
-        .usage-text.success { 
-          color: ${colors.success};
-          margin-top: 10px;
-        }
+        .usage-label { color: ${colors.gray}; font-size: 13px; font-weight: 800; margin-bottom: 16px; text-transform: uppercase; }
+        .usage-bar { height: 10px; background: ${colors.lightGray}; border-radius: 10px; overflow: hidden; border: 2px solid ${colors.black}; margin-bottom: 12px; }
+        .usage-fill { height: 100%; background: ${colors.primary}; border-radius: 10px; }
+        .usage-text { font-size: 14px; color: ${colors.gray}; font-weight: 700; }
+        .usage-text.success { color: ${colors.success}; margin-top: 10px; }
       </style>
     </head>
     <body>
       <div class="container">
         <div class="header">
           <h1>Billing & Subscription</h1>
-          <p>Manage your plan, payment methods, and billing history.</p>
+          <p>Manage your plan and payment methods.</p>
         </div>
         
         <div class="billing-grid">
           <div class="main-content">
-            <!-- Current Plan -->
             <div class="card">
               <h2 class="card-title">Current Plan</h2>
               <div class="current-plan">
@@ -1599,7 +1319,7 @@ async function generateBilling(browser, outputDir) {
                 </div>
               </div>
               
-              <h3 style="margin-bottom: 20px; font-size: 18px; font-weight: 700;">Payment Method</h3>
+              <h3 style="margin-bottom: 20px; font-size: 18px;">Payment Method</h3>
               <div class="payment-method">
                 <div class="card-icon">VISA</div>
                 <div class="card-details">
@@ -1610,69 +1330,34 @@ async function generateBilling(browser, outputDir) {
               </div>
             </div>
             
-            <!-- Invoice History -->
             <div class="card">
               <h2 class="card-title">Invoice History</h2>
               <table class="invoice-table">
                 <thead>
-                  <tr>
-                    <th>Invoice</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                    <th></th>
-                  </tr>
+                  <tr><th>Invoice</th><th>Date</th><th>Amount</th><th>Status</th><th></th></tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td><strong>#INV-2026-003</strong></td>
-                    <td>Mar 6, 2026</td>
-                    <td><strong>$29.00</strong></td>
-                    <td><span class="status-badge status-paid">Paid</span></td>
-                    <td><a href="#" class="btn-download">Download PDF</a></td>
-                  </tr>
-                  <tr>
-                    <td><strong>#INV-2026-002</strong></td>
-                    <td>Feb 6, 2026</td>
-                    <td><strong>$29.00</strong></td>
-                    <td><span class="status-badge status-paid">Paid</span></td>
-                    <td><a href="#" class="btn-download">Download PDF</a></td>
-                  </tr>
-                  <tr>
-                    <td><strong>#INV-2026-001</strong></td>
-                    <td>Jan 6, 2026</td>
-                    <td><strong>$29.00</strong></td>
-                    <td><span class="status-badge status-paid">Paid</span></td>
-                    <td><a href="#" class="btn-download">Download PDF</a></td>
-                  </tr>
-                  <tr>
-                    <td><strong>#INV-2025-012</strong></td>
-                    <td>Dec 6, 2025</td>
-                    <td><strong>$29.00</strong></td>
-                    <td><span class="status-badge status-pending">Pending</span></td>
-                    <td><a href="#" class="btn-download">Download PDF</a></td>
-                  </tr>
+                  <tr><td><strong>#INV-2026-003</strong></td><td>Mar 6, 2026</td><td><strong>$29.00</strong></td><td><span class="status-badge status-paid">Paid</span></td><td><a href="#" class="btn-download">Download</a></td></tr>
+                  <tr><td><strong>#INV-2026-002</strong></td><td>Feb 6, 2026</td><td><strong>$29.00</strong></td><td><span class="status-badge status-paid">Paid</span></td><td><a href="#" class="btn-download">Download</a></td></tr>
+                  <tr><td><strong>#INV-2026-001</strong></td><td>Jan 6, 2026</td><td><strong>$29.00</strong></td><td><span class="status-badge status-paid">Paid</span></td><td><a href="#" class="btn-download">Download</a></td></tr>
+                  <tr><td><strong>#INV-2025-012</strong></td><td>Dec 6, 2025</td><td><strong>$29.00</strong></td><td><span class="status-badge status-pending">Pending</span></td><td><a href="#" class="btn-download">Download</a></td></tr>
                 </tbody>
               </table>
             </div>
           </div>
           
           <div class="sidebar">
-            <!-- Upgrade CTA -->
             <div class="upgrade-cta">
               <h3>🚀 Go Enterprise</h3>
-              <p>Unlimited events, dedicated support, custom integrations, and SLA guarantee.</p>
+              <p>Unlimited events, dedicated support, custom integrations.</p>
               <button class="btn-white">Contact Sales</button>
             </div>
             
-            <!-- Usage -->
             <div class="usage-card">
               <div class="usage-label">Monthly Usage</div>
-              <div class="usage-bar">
-                <div class="usage-fill" style="width: 68%;"></div>
-              </div>
+              <div class="usage-bar"><div class="usage-fill" style="width: 68%;"></div></div>
               <div class="usage-text">68,432 / 100,000 events</div>
-              <div class="usage-text success">✓ Within plan limits</div>
+              <div class="usage-text success">✓ Within limits</div>
             </div>
           </div>
         </div>
@@ -1685,4 +1370,4 @@ async function generateBilling(browser, outputDir) {
   await page.close();
 }
 
-console.log('✨ Fashion-forward screenshot generator loaded');
+console.log('✨ Nano Banana screenshot generator ready');
