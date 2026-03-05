@@ -1,195 +1,61 @@
-# API 文档
+# API Reference
 
-## 认证 API
+This document describes the API endpoints and webhooks.
 
-### 获取当前用户
+## API Endpoints
 
-**路径**: `GET /api/user`
+### Authentication
 
-**描述**: 获取当前登录用户的信息
-
-**响应**:
-```json
-{
-  "id": "user_123",
-  "clerkId": "user_abc",
-  "email": "user@example.com",
-  "name": "John Doe",
-  "subscription": {
-    "plan": "PRO",
-    "status": "active"
-  }
-}
+#### Stripe Callback
 ```
+GET /api/auth/callback/stripe
+```
+
+Handles Stripe authentication callback.
+
+**Query Parameters:**
+- `session_id` - Stripe session ID
+
+**Response:**
+- Redirects to dashboard or billing page
 
 ---
 
-## 指标 API
+### Webhooks
 
-### 获取用户指标
-
-**路径**: `GET /api/metrics`
-
-**查询参数**:
-- `days` (可选): 获取最近 N 天的数据，默认 30
-- `name` (可选): 过滤特定指标名称
-
-**响应**:
-```json
-[
-  {
-    "id": "metric_123",
-    "name": "revenue",
-    "value": 1500.50,
-    "date": "2024-01-15T00:00:00Z"
-  }
-]
+#### Stripe Webhook
+```
+POST /api/webhooks/stripe
 ```
 
-### 创建指标
+Handles Stripe webhook events.
 
-**路径**: `POST /api/metrics`
+**Events Handled:**
+- `checkout.session.completed`
+- `customer.subscription.updated`
+- `customer.subscription.deleted`
 
-**请求体**:
+**Headers:**
+- `stripe-signature` - Stripe signature for verification
+
+**Request Body:**
 ```json
 {
-  "name": "revenue",
-  "value": 1500.50,
-  "date": "2024-01-15"
-}
-```
-
-**响应**:
-```json
-{
-  "id": "metric_123",
-  "name": "revenue",
-  "value": 1500.50,
-  "date": "2024-01-15T00:00:00Z"
-}
-```
-
-### 批量创建指标
-
-**路径**: `POST /api/metrics/bulk`
-
-**请求体**:
-```json
-{
-  "metrics": [
-    { "name": "revenue", "value": 1500, "date": "2024-01-15" },
-    { "name": "users", "value": 500, "date": "2024-01-15" }
-  ]
-}
-```
-
----
-
-## 订阅 API
-
-### 获取订阅状态
-
-**路径**: `GET /api/subscription`
-
-**响应**:
-```json
-{
-  "plan": "PRO",
-  "status": "active",
-  "currentPeriodEnd": "2024-02-15T00:00:00Z",
-  "features": {
-    "analytics": true,
-    "teamMembers": 5,
-    "storage": "10GB"
-  }
-}
-```
-
-### 创建结账会话
-
-**路径**: `POST /api/checkout`
-
-**请求体**:
-```json
-{
-  "plan": "pro"
-}
-```
-
-**响应**:
-```json
-{
-  "url": "https://checkout.stripe.com/..."
-}
-```
-
-### 创建门户会话
-
-**路径**: `POST /api/portal`
-
-**描述**: 创建 Stripe 客户门户会话，用于管理订阅
-
-**响应**:
-```json
-{
-  "url": "https://billing.stripe.com/..."
-}
-```
-
----
-
-## 团队 API
-
-### 获取团队成员
-
-**路径**: `GET /api/team`
-
-**响应**:
-```json
-{
-  "id": "team_123",
-  "name": "My Team",
-  "members": [
-    {
-      "id": "user_1",
-      "name": "John Doe",
-      "email": "john@example.com",
-      "role": "ADMIN"
+  "type": "checkout.session.completed",
+  "data": {
+    "object": {
+      "id": "cs_test_...",
+      "mode": "subscription",
+      "metadata": {
+        "userId": "user_123",
+        "plan": "PRO"
+      }
     }
-  ]
+  }
 }
 ```
 
-### 邀请团队成员
-
-**路径**: `POST /api/team/invite`
-
-**请求体**:
-```json
-{
-  "email": "newmember@example.com",
-  "role": "MEMBER"
-}
-```
-
-### 移除团队成员
-
-**路径**: `DELETE /api/team/members/:memberId`
-
----
-
-## Webhook API
-
-### Stripe Webhook
-
-**路径**: `POST /api/webhooks/stripe`
-
-**处理事件**:
-- `checkout.session.completed` - 订阅购买完成
-- `customer.subscription.updated` - 订阅更新
-- `customer.subscription.deleted` - 订阅取消
-
-**响应**:
+**Response:**
 ```json
 {
   "received": true
@@ -198,134 +64,92 @@
 
 ---
 
-## 错误响应
+## Server Actions
 
-### 400 Bad Request
+### Create Checkout Session
 
-```json
-{
-  "error": "Invalid request",
-  "message": "Missing required field: name"
-}
+```ts
+async function createCheckoutSession({
+  userId,
+  email,
+  plan,
+  successUrl,
+  cancelUrl
+})
 ```
 
-### 401 Unauthorized
+Creates a Stripe checkout session.
 
-```json
-{
-  "error": "Unauthorized",
-  "message": "You must be logged in to access this resource"
-}
-```
+**Parameters:**
+- `userId` - User ID
+- `email` - User email
+- `plan` - Plan type (PRO | ENTERPRISE)
+- `successUrl` - Redirect URL on success
+- `cancelUrl` - Redirect URL on cancel
 
-### 403 Forbidden
-
-```json
-{
-  "error": "Forbidden",
-  "message": "This feature requires a PRO subscription"
-}
-```
-
-### 404 Not Found
-
-```json
-{
-  "error": "Not Found",
-  "message": "Resource not found"
-}
-```
-
-### 500 Internal Server Error
-
-```json
-{
-  "error": "Internal Server Error",
-  "message": "Something went wrong"
-}
-```
+**Returns:** Stripe session URL
 
 ---
 
-## 使用示例
+### Create Portal Session
 
-### 使用 fetch 获取指标
-
-```typescript
-async function getMetrics(days = 30) {
-  const response = await fetch(`/api/metrics?days=${days}`)
-  
-  if (!response.ok) {
-    throw new Error('Failed to fetch metrics')
-  }
-  
-  return response.json()
-}
+```ts
+async function createPortalSession({
+  customerId,
+  returnUrl
+})
 ```
 
-### 使用 fetch 创建指标
+Creates a Stripe customer portal session.
 
-```typescript
-async function createMetric(name: string, value: number) {
-  const response = await fetch('/api/metrics', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, value }),
-  })
-  
-  if (!response.ok) {
-    throw new Error('Failed to create metric')
-  }
-  
-  return response.json()
-}
-```
+**Parameters:**
+- `customerId` - Stripe customer ID
+- `returnUrl` - Redirect URL after portal
 
-### 使用 Server Action
-
-```typescript
-// app/actions.ts
-'use server'
-
-import { requireUser } from '@/lib/auth'
-import { prisma } from '@/lib/db'
-
-export async function createMetricAction(name: string, value: number) {
-  const user = await requireUser()
-  
-  return prisma.metric.create({
-    data: {
-      userId: user.id,
-      name,
-      value,
-      date: new Date(),
-    },
-  })
-}
-```
+**Returns:** Portal session URL
 
 ---
 
-## 速率限制
+### Manage Billing
 
-- 免费计划：100 请求/小时
-- Pro 计划：1000 请求/小时
-- Enterprise 计划：10000 请求/小时
+```ts
+async function handleManageBilling(formData: FormData)
+```
+
+Server Action for billing management.
+
+**Flow:**
+1. Get user subscription
+2. Create portal session
+3. Redirect to Stripe
 
 ---
 
-## 认证
+## Error Handling
 
-所有 API 端点 (除了 webhook) 都需要通过 Clerk 认证。
+All API endpoints return consistent error format:
 
-认证通过中间件自动处理，无需手动添加 token。
+```json
+{
+  "error": "Error message",
+  "code": "ERROR_CODE"
+}
+```
+
+**Common Error Codes:**
+- `UNAUTHORIZED` - User not authenticated
+- `INVALID_REQUEST` - Bad request parameters
+- `NOT_FOUND` - Resource not found
+- `INTERNAL_ERROR` - Server error
 
 ---
 
-## 最佳实践
+## Rate Limiting
 
-1. **始终检查响应状态**
-2. **处理错误情况**
-3. **使用适当的 HTTP 方法**
-4. **验证输入数据**
-5. **限制请求频率**
+API endpoints use rate limiting:
+- 100 requests per minute per IP
+- 1000 requests per hour per user
+
+---
+
+**Contact**: ginoshaw1991@hotmail.com

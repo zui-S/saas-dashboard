@@ -1,318 +1,136 @@
-# 商业指南 - SaaS 仪表盘
+# Business Logic
 
-## 市场定位
+This document describes the business logic and monetization strategy.
 
-### 目标客户
+## Pricing Tiers
 
-1. **小型企业** (1-10 人)
-   - 需要数据监控但预算有限
-   - 愿意支付 $9-29/月
+### Free Plan ($0/month)
+- Basic analytics
+- 1 team member
+- Email support
+- 1GB storage
 
-2. **创业公司**
-   - 快速验证产品指标
-   - 愿意支付 $29-99/月
+### Pro Plan ($29/month)
+- Advanced analytics
+- 5 team members
+- Priority support
+- Custom reports
+- 10GB storage
+- API access
 
-3. **自由职业者**
-   - 追踪项目进度
-   - 愿意支付 $9-29/月
-
-### 竞争对手分析
-
-| 竞品 | 价格 | 优势 | 劣势 |
-|------|------|------|------|
-| Tableau | $70+/月 | 功能强大 | 学习曲线陡 |
-| Looker Studio | 免费 | Google 生态 | 功能有限 |
-| Metabase | $85+/月 | 开源 | 部署复杂 |
-| **我们的产品** | $29/月 | 易用 + 实惠 | 品牌知名度低 |
-
----
-
-## 定价策略
-
-### 基础版 - $9/月
-
-- 基础仪表盘
-- 3 个数据源
-- 1 用户
-- 邮件支持
-
-### 专业版 - $29/月 ⭐ (推荐)
-
-- 高级图表
-- 无限数据源
-- 5 用户
-- 优先支持
-- 自定义报告
-
-### 企业版 - $99/月
-
-- 所有专业版功能
-- 无限用户
-- 自定义集成
-- 专属客服
-- SLA 保障
-
-### 年付优惠
-
-- 年付享受 2 个月免费
-- 专业版年付：$290 (省$58)
-- 企业版年付：$990 (省$198)
+### Enterprise Plan ($99/month)
+- Unlimited everything
+- Unlimited team members
+- 24/7 dedicated support
+- Custom integrations
+- Unlimited storage
+- SLA
+- Advanced security
 
 ---
 
-## 营销策略
+## Revenue Model
 
-### 内容营销
+### Subscription Revenue
+- Recurring monthly revenue from Pro and Enterprise plans
+- Expected MRR: $3,000-10,000 (based on 100-300 Pro users)
 
-1. **博客文章**
-   - "如何构建数据驱动的决策文化"
-   - "10 个关键 SaaS 指标"
-   - "数据可视化最佳实践"
+### Commercial Licensing
+- One-time license fee: $3,000-10,000
+- Includes production deployment rights
+- Technical support included
 
-2. **案例研究**
-   - 客户成功故事
-   - 使用前后的对比数据
-
-3. **视频教程**
-   - 产品演示
-   - 使用技巧
-   - 客户见证
-
-### SEO 优化
-
-- 关键词：dashboard, analytics, saas metrics, data visualization
-- 目标：Google 第一页排名
-- 内容：每周 2-3 篇高质量文章
-
-### 社交媒体
-
-1. **Twitter/X**
-   - 分享产品更新
-   - 参与 SaaS 社区讨论
-   - 建立个人品牌
-
-2. **LinkedIn**
-   - B2B 营销
-   - 发布行业洞察
-   - 建立专业网络
-
-3. **Product Hunt**
-   - 产品发布
-   - 获取早期用户
-   - 收集反馈
-
-### 付费广告
-
-1. **Google Ads**
-   - 关键词广告
-   - 预算：$500-1000/月
-   - 目标：CPC < $2
-
-2. **Facebook/Instagram**
-   - 定向广告
-   - 再营销广告
-   - 预算：$300-500/月
+### Custom Development
+- Custom feature development: $5,000-20,000
+- Integration services: $2,000-5,000
+- Training and consulting: $500-2,000/day
 
 ---
 
-## 销售渠道
+## Target Market
 
-### 自助服务 (主要)
+### Primary Audience
+- SaaS startups
+- Small to medium businesses
+- Agencies managing multiple clients
+- Developers building internal tools
 
-- 网站直接购买
-- 14 天免费试用
-- 无需销售介入
-
-### 企业销售
-
-- 针对大客户
-- 定制演示
-- 合同谈判
-
-### 合作伙伴
-
-- 代理机构合作
-- 推荐计划
-- 联盟营销
+### Use Cases
+1. **Analytics Dashboard** - Track business metrics
+2. **Customer Portal** - Provide customer-facing analytics
+3. **Internal Tools** - Team productivity tracking
+4. **White-label Solution** - Resell to clients
 
 ---
 
-## 客户获取成本 (CAC)
+## Competitive Advantages
 
-### 目标 CAC
+### Technical
+- Next.js 15 (latest framework)
+- TypeScript (type safety)
+- Prisma (modern ORM)
+- Stripe integration (production-ready)
+- Clerk authentication (secure & easy)
 
-- 基础版：< $30
-- 专业版：< $100
-- 企业版：< $300
-
-### 获客渠道效率
-
-| 渠道 | CAC | 转化率 | 建议 |
-|------|-----|--------|------|
-| 有机搜索 | $20 | 5% | 加大投入 |
-| 付费广告 | $80 | 3% | 优化 |
-| 推荐 | $10 | 10% | 扩大计划 |
-| 社交媒体 | $40 | 4% | 持续运营 |
-
----
-
-## 收入预测
-
-### 第一年目标
-
-- 月经常性收入 (MRR): $10,000
-- 客户数：400
-- 流失率：< 5%/月
-
-### 增长路径
-
-**月 1-3**: 产品完善 + 早期用户
-- 目标：50 客户，$1,500 MRR
-
-**月 4-6**: 营销扩张
-- 目标：150 客户，$4,500 MRR
-
-**月 7-9**: 规模化
-- 目标：300 客户，$9,000 MRR
-
-**月 10-12**: 优化 + 盈利
-- 目标：400 客户，$12,000 MRR
+### Business
+- Complete solution (not just templates)
+- Production-ready code
+- Multi-tenant architecture
+- Subscription billing included
+- Commercial license available
 
 ---
 
-## 客户成功
+## Go-to-Market Strategy
 
-### 上线流程
+### Phase 1: Open Source Launch
+- Release on GitHub
+- Build community
+- Gather feedback
+- Create documentation
 
-1. **欢迎邮件** - 注册后立即发送
-2. **入门指南** - 分步骤教程
-3. **检查点** - 第 1、7、14 天跟进
-4. **反馈收集** - 持续改进产品
+### Phase 2: Commercial Launch
+- Launch commercial license
+- Target agencies and consultancies
+- Offer custom development
+- Build case studies
 
-### 减少流失
-
-1. **主动监控**
-   - 使用率下降时主动联系
-   - 提供额外帮助
-
-2. **价值证明**
-   - 定期发送使用报告
-   - 展示 ROI
-
-3. **升级路径**
-   - 免费 → 付费的平滑过渡
-   - 功能限制的合理设计
+### Phase 3: Scale
+- Add premium features
+- Expand documentation
+- Build partner network
+- Consider SaaS hosting option
 
 ---
 
-## 定价页面优化
+## Customer Support
 
-### A/B 测试要素
+### Support Channels
+- Email: ginoshaw1991@hotmail.com
+- GitHub Issues (for bugs)
+- Documentation (self-service)
 
-1. **价格锚点**
-   - 测试不同价格点
-   - 观察转化率变化
-
-2. **功能对比**
-   - 测试不同功能组合
-   - 找出关键决策因素
-
-3. **CTA 文案**
-   - "开始免费试用" vs "立即开始"
-   - 测试按钮颜色和位置
-
-### 最佳实践
-
-- 显示年度节省金额
-- 提供计算器展示 ROI
-- 添加客户评价
-- 显示信任标志 (安全认证等)
+### Response Times
+- Free users: 48-72 hours
+- Commercial license: 24 hours
+- Custom development: Dedicated support
 
 ---
 
-## 竞争策略
+## Success Metrics
 
-### 差异化
+### Technical Metrics
+- GitHub stars: Target 500+ in first year
+- Forks: Target 100+
+- Downloads: Track npm package usage
 
-1. **易用性**
-   - 5 分钟设置完成
-   - 无需技术背景
-
-2. **价格优势**
-   - 比竞品便宜 50%
-   - 透明定价，无隐藏费用
-
-3. **客户支持**
-   - 24 小时响应
-   - 真人客服，非机器人
-
-### 护城河
-
-1. **网络效应**
-   - 团队协作用户粘性
-   - 数据积累形成壁垒
-
-2. **转换成本**
-   - 历史数据迁移困难
-   - 团队使用习惯
-
-3. **品牌认知**
-   - 持续内容输出
-   - 客户口碑传播
+### Business Metrics
+- Commercial licenses sold: Target 10-20 in first year
+- Custom development projects: Target 5-10
+- Monthly recurring revenue: Target $3,000-10,000
 
 ---
 
-## 关键指标 (KPIs)
+**Contact**: ginoshaw1991@hotmail.com
 
-### 财务指标
-
-- MRR (月经常性收入)
-- ARR (年经常性收入)
-- CAC (客户获取成本)
-- LTV (客户终身价值)
-- Churn Rate (流失率)
-
-### 产品指标
-
-- DAU/MAU (活跃用户)
-- Feature Adoption (功能采用率)
-- NPS (净推荐值)
-- Time to Value (价值实现时间)
-
-### 营销指标
-
-- Website Traffic (网站流量)
-- Conversion Rate (转化率)
-- Trial to Paid (试用转化率)
-- CAC Payback Period (回本周期)
-
----
-
-## 行动清单
-
-### 上线前
-
-- [ ] 完成产品测试
-- [ ] 准备营销材料
-- [ ] 设置分析工具
-- [ ] 培训客服团队
-- [ ] 准备应急方案
-
-### 上线后第 1 周
-
-- [ ] 监控所有指标
-- [ ] 收集用户反馈
-- [ ] 快速修复 bug
-- [ ] 优化转化漏斗
-- [ ] 发布 PR
-
-### 持续优化
-
-- [ ] 每周分析数据
-- [ ] 每月调整策略
-- [ ] 季度业务回顾
-- [ ] 年度战略规划
-
----
-
-**记住**: 成功 = 好产品 × 有效营销 × 优秀执行 💪
+**Commercial Inquiries**: ginoshaw1991@hotmail.com
