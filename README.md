@@ -111,17 +111,31 @@ saas-dashboard/
 
 ## 📸 功能截图
 
-### 仪表盘首页
-![Dashboard](./docs/screenshots/dashboard.png)
+> 🚧 截图即将添加 - 项目已在本地运行验证
 
-### 数据可视化
-![Analytics](./docs/screenshots/analytics.png)
+### 页面预览
 
-### 订阅管理
-![Billing](./docs/screenshots/billing.png)
+**🏠 首页**
+- 现代化 Hero 区域
+- 功能特性展示
+- CTA 行动号召
 
-### 用户认证
-![Sign In](./docs/screenshots/signin.png)
+**📊 数据仪表盘**
+- 实时数据可视化
+- 收入图表（Recharts）
+- 用户统计卡片
+
+**💳 订阅管理**
+- Stripe 支付集成
+- 订阅计划选择
+- 账单历史
+
+**🔐 用户认证**
+- Clerk 安全登录
+- 社交账号登录
+- 密码找回
+
+> 💡 **本地运行查看完整效果**: `npm install && npm run dev`
 
 ---
 
