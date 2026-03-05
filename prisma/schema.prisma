@@ -1,0 +1,105 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 用户模型 (与 Clerk 同步)
+model User {
+  id             String    @id @default(cuid())
+  clerkId        String    @unique
+  email          String    @unique
+  name           String?
+  imageUrl       String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  
+  // 订阅信息
+  subscription   Subscription?
+  
+  // 数据记录
+  metrics        Metric[]
+  
+  // 团队
+  teamId         String?
+  team           Team?     @relation(fields: [teamId], references: [id])
+  teamMembers    TeamMember[]
+}
+
+// 订阅模型
+model Subscription {
+  id             String    @id @default(cuid())
+  userId         String    @unique
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  stripeCustomerId String? @unique
+  stripeSubscriptionId String? @unique
+  stripePriceId  String?
+  stripeCurrentPeriodEnd DateTime?
+  
+  plan           Plan      @default(FREE)
+  status         String    @default("active")
+  
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+enum Plan {
+  FREE
+  PRO
+  ENTERPRISE
+}
+
+// 团队模型 (多租户支持)
+model Team {
+  id             String    @id @default(cuid())
+  name           String
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  
+  users          User[]
+  members        TeamMember[]
+  metrics        Metric[]
+}
+
+model TeamMember {
+  id             String    @id @default(cuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  teamId         String
+  team           Team      @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  role           Role      @default(MEMBER)
+  
+  @@unique([userId, teamId])
+}
+
+enum Role {
+  ADMIN
+  MEMBER
+}
+
+// 指标数据模型
+model Metric {
+  id             String    @id @default(cuid())
+  userId         String
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  teamId         String?
+  team           Team?     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  
+  name           String    // 指标名称 (e.g., "revenue", "users")
+  value          Float     // 指标值
+  date           DateTime  // 数据日期
+  
+  metadata       Json?     // 额外元数据
+  
+  createdAt      DateTime  @default(now())
+  
+  @@index([userId, date])
+  @@index([teamId, date])
+}
