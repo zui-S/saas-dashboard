@@ -138,7 +138,7 @@ saas-dashboard/
 - ✅ 技术支持
 - ✅ 定制开发
 
-**联系**: [你的邮箱]
+**联系**: ginoshaw1991@hotmail.com
 
 ---
 
@@ -189,7 +189,7 @@ saas-dashboard/
 ## 📧 联系方式
 
 - **作者**: zui-S
-- **邮箱**: [你的邮箱]
+- **邮箱**: ginoshaw1991@hotmail.com
 - **项目**: SaaS Dashboard
 - **定价**: $3,000-10,000 (商业授权)
 
