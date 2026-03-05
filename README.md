@@ -124,6 +124,27 @@ saas-dashboard/
 
 ---
 
+## 📸 Screenshots
+
+### Homepage
+![Homepage](docs/screenshots/01-homepage.png)
+
+### Sign In
+![Sign In](docs/screenshots/02-signin.png)
+
+### Dashboard
+![Dashboard](docs/screenshots/03-dashboard.png)
+
+### Pricing
+![Pricing](docs/screenshots/04-pricing.png)
+
+### Billing
+![Billing](docs/screenshots/05-billing.png)
+
+> 🚧 These are placeholder images. Run `npm run dev` and replace with live screenshots!
+
+---
+
 ## Features Worth Mentioning
 
 ### Authentication
@@ -255,6 +276,25 @@ If you want to use this as a white-label solution or resell it, I offer commerci
 - Custom feature development available
 
 **Interested?** Email me at ginoshaw1991@hotmail.com
+
+---
+
+## 📁 Generate Your Own Screenshots
+
+Want to replace the placeholder screenshots with live ones? Easy:
+
+```bash
+# Install Playwright (already included in devDependencies)
+npm install
+
+# Start the dev server in one terminal
+npm run dev
+
+# In another terminal, run the screenshot generator
+node generate-screenshots.js
+```
+
+This will capture real screenshots of your running app and save them to `docs/screenshots/`.
 
 ---
 
